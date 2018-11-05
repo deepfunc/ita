@@ -5,19 +5,19 @@ from utils.random_helper import get_random_numbers_lte_100
 def play():
     numbers = get_random_numbers_lte_100(10)
     print(numbers)
-    sort(numbers, 0, len(numbers) - 1)
+    _sort(numbers, 0, len(numbers) - 1)
     print(numbers)
 
 
-def sort(arr, p, r):
+def _sort(arr, p, r):
     if p < r:
         q = (p + r) // 2
-        sort(arr, p, q)
-        sort(arr, q + 1, r)
-        merge(arr, p, q, r)
+        _sort(arr, p, q)
+        _sort(arr, q + 1, r)
+        _merge(arr, p, q, r)
 
 
-def merge(arr, p, q, r):
+def _merge(arr, p, q, r):
     # 两个临时数组，l_arr 包含 [p, q]，r_arr 包含 [q, r]
     # 并且每个数组要多放一个哨兵 ∞ 在最后
     n1 = q - p + 1

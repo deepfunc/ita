@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from sort import insertion_sort
-from sort import merge_sort
+import sort.insertion
+import sort.merge
+import search.find_maximum_subarray
 
-# insertion_sort.play()
-merge_sort.play()
+# sort.insertion.play()
+# sort.merge.play()
+search.find_maximum_subarray.play()
