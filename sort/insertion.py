@@ -4,11 +4,14 @@ from utils.random_helper import get_random_numbers_lte_100
 def play():
     numbers = get_random_numbers_lte_100(10)
     print(numbers)
-    sort(numbers)
+    _sort(numbers)
     print(numbers)
 
 
-def sort(arr):
+def _sort(arr):
+    """插入排序，最坏运行时间为: O(n2)
+    """
+
     # 从第二个元素开始循环
     for i in range(1, len(arr)):
         # 记录当前元素为 key
