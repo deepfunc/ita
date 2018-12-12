@@ -7,6 +7,7 @@ import search.find_maximum_subarray
 import number.power
 import number.gcd
 import number.modular_exponentiation
+import number.modular_linear_equation
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -15,4 +16,6 @@ import number.modular_exponentiation
 # number.gcd.play_by_euclid(30, 21)
 # number.gcd.play_by_gcd(30, 21)
 # number.gcd.play_by_extended_gcd(30, 21)
-number.modular_exponentiation.play(3, 644, 645)
+# number.modular_exponentiation.play(3, 644, 645)
+number.modular_linear_equation.play(14, 30, 100)
+
