@@ -18,4 +18,3 @@ import number.modular_linear_equation
 # number.gcd.play_by_extended_gcd(30, 21)
 # number.modular_exponentiation.play(3, 644, 645)
 number.modular_linear_equation.play(14, 30, 100)
-
