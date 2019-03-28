@@ -1,5 +1,8 @@
 """斐波那契数列的计算
 """
+from utils.matrix import \
+    quick_square_matrix_power1 as square_matrix_power, \
+    mul1_matrix as mul_matrix
 
 
 def play_fib1(n):
@@ -16,6 +19,13 @@ def play_fib2(n):
     ))
 
 
+def play_fib3(n):
+    print('fib3({n}) is {result}'.format(
+        n=n,
+        result=fib3(n)
+    ))
+
+
 def fib1(n):
     """定义法递归求解
     """
@@ -26,7 +36,6 @@ def fib1(n):
     else:
         # n == 0
         return 0
-    pass
 
 
 def fib2(n):
@@ -51,4 +60,17 @@ def fib2(n):
         i += 2
 
     return y if i == n else x
-    pass
+
+
+def fib3(n):
+    """矩阵快速幂方式求斐波那契数列
+    原理可以看这个：https://blog.csdn.net/a17865569022/article/details/78309994
+    """
+    if n == 0:
+        return 0
+
+    matrix = [[1, 1],
+              [1, 0]]
+    power = square_matrix_power(matrix, n - 1)
+    fib_matrix = mul_matrix(power, [[1], [0]])
+    return fib_matrix[0][0]

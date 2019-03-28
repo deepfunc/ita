@@ -2,29 +2,20 @@
 """
 
 
-def play_test():
-    # a = [[1, 2, 9], [3, 4, 10]]
-    # b = [[5, 6], [7, 8], [11, 12]]
-    a = [[1, 2],
-         [3, 4]]
-    b = [[123, 456],
-         [777, 888]]
-    print(mul1_matrix(a, b))
+def quick_square_matrix_power1(matrix, exponent):
+    """方阵快速幂算法，逻辑类似整数快速幂
+    可以这样计算因为矩阵乘法是满足结合律的
+    """
+    n = len(matrix)
+    ret = create_unit_matrix(n)
 
+    while exponent != 0:
+        if exponent & 1:
+            ret = mul1_matrix(matrix, ret)
+        matrix = mul1_matrix(matrix, matrix)
+        exponent >>= 1
 
-# def quick_square_matrix_power1(matrix, n_of_matrix, exponent):
-#     """方阵快速幂算法，逻辑类似整数快速幂
-#     可以这样计算因为矩阵乘法是满足结合律的
-#     """
-#     ret = create_unit_matrix(n_of_matrix)
-#
-#     while exponent != 0:
-#         if exponent & 1:
-#             ret =
-#         a *= a
-#         b >>= 1
-#
-#     return ret
+    return ret
 
 
 def mul1_matrix(matrix_a, matrix_b):
@@ -34,16 +25,16 @@ def mul1_matrix(matrix_a, matrix_b):
     m = len(matrix_a)
     n = len(matrix_b)
     s = len(matrix_b[0])
-    matrix_c = create_empty_matrix(m, s)
+    ret = create_empty_matrix(m, s)
 
     for i in range(m):
         for j in range(s):
             c_ij = 0
             for k in range(n):
                 c_ij += matrix_a[i][k] * matrix_b[k][j]
-            matrix_c[i][j] = c_ij
+            ret[i][j] = c_ij
 
-    return matrix_c
+    return ret
 
 
 def create_empty_square_matrix(n):

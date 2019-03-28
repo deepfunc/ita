@@ -10,7 +10,6 @@ import number.modular_exponentiation
 import number.modular_linear_equation
 import search.binary_search_tree
 import number.fibonacci
-import utils.matrix
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -22,7 +21,7 @@ import utils.matrix
 # number.modular_exponentiation.play(3, 644, 645)
 # number.modular_linear_equation.play(14, 30, 100)
 # search.binary_search_tree.play()
-# number.power.play_by_power_quick1(16, 10)
+# number.power.play_by_quick_power1(16, 10)
 # number.fibonacci.play_fib1(6)
 # number.fibonacci.play_fib2(6)
-utils.matrix.play_test()
+number.fibonacci.play_fib3(12)

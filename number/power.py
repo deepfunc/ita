@@ -6,11 +6,11 @@ def play_by_power_cd(base, exponent):
     ))
 
 
-def play_by_power_quick1(base, exponent):
+def play_by_quick_power1(base, exponent):
     print('{base} to the power {exponent} by power_quick1(a, b) is {result}'.format(
         base=base,
         exponent=exponent,
-        result=power_quick1(base, exponent)
+        result=quick_power1(base, exponent)
     ))
 
 
@@ -28,7 +28,7 @@ def power_cd(base, exponent):
         return ret * ret * base
 
 
-def power_quick1(a, b):
+def quick_power1(a, b):
     """快速幂算法之一
 
     指数可以转换为二进制表示，例如：
