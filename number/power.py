@@ -50,3 +50,11 @@ def quick_power1(a, b):
         b >>= 1
 
     return ret
+
+
+def is_power_of_2(num):
+    """只要是 2 的次方幂，必然是最高位为 1，其余为 0，当 num - 1 时，则最高位是 0，其余是 1
+
+    还有一种方案可以用转换后的正则来判断，/^10*$/
+    """
+    return (num > 0) and ((num & (num - 1)) == 0)

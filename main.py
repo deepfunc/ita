@@ -10,6 +10,7 @@ import number.modular_exponentiation
 import number.modular_linear_equation
 import search.binary_search_tree
 import number.fibonacci
+import utils.matrix as matrix
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -24,4 +25,33 @@ import number.fibonacci
 # number.power.play_by_quick_power1(16, 10)
 # number.fibonacci.play_fib1(6)
 # number.fibonacci.play_fib2(6)
-number.fibonacci.play_fib3(12)
+# number.fibonacci.play_fib3(12)
+
+# a = [
+#     [1, 2, 3, 4],
+#     [5, 6, 7, 8],
+#     [1, 2, 3, 4],
+#     [5, 6, 7, 8]
+# ]
+# b = [
+#     [5, 6, 7, 8],
+#     [1, 2, 3, 4],
+#     [5, 6, 7, 8],
+#     [1, 2, 3, 4]
+# ]
+a = [
+    [7, 8],
+    [9, 10]
+]
+b = [
+    [11, 12],
+    [13, 14]
+]
+print(matrix.mul_square_matrix_recursive(
+    matrix_a=a,
+    row_range_of_matrix_a=range(len(a)),
+    col_range_of_matrix_a=range(len(a[0])),
+    matrix_b=b,
+    row_range_of_matrix_b=range(len(b)),
+    col_range_of_matrix_b=range(len(b[0]))
+))

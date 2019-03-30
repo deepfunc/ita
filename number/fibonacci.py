@@ -1,8 +1,7 @@
 """斐波那契数列的计算
 """
 from utils.matrix import \
-    quick_square_matrix_power1 as square_matrix_power, \
-    mul1_matrix as mul_matrix
+    quick_square_matrix_power, mul_matrix
 
 
 def play_fib1(n):
@@ -71,6 +70,6 @@ def fib3(n):
 
     matrix = [[1, 1],
               [1, 0]]
-    power = square_matrix_power(matrix, n - 1)
+    power = quick_square_matrix_power(matrix, n - 1)
     fib_matrix = mul_matrix(power, [[1], [0]])
     return fib_matrix[0][0]
