@@ -11,6 +11,7 @@ import number.modular_linear_equation
 import search.binary_search_tree
 import number.fibonacci
 import utils.matrix as matrix
+import sort.max_heap
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -39,19 +40,22 @@ import utils.matrix as matrix
 #     [5, 6, 7, 8],
 #     [1, 2, 3, 4]
 # ]
-a = [
-    [7, 8],
-    [9, 10]
-]
-b = [
-    [11, 12],
-    [13, 14]
-]
-print(matrix.mul_square_matrix_recursive(
-    matrix_a=a,
-    row_range_of_matrix_a=range(len(a)),
-    col_range_of_matrix_a=range(len(a[0])),
-    matrix_b=b,
-    row_range_of_matrix_b=range(len(b)),
-    col_range_of_matrix_b=range(len(b[0]))
-))
+# a = [
+#     [7, 8],
+#     [9, 10]
+# ]
+# b = [
+#     [11, 12],
+#     [13, 14]
+# ]
+# print(matrix.mul_square_matrix_recursive(
+#     matrix_a=a,
+#     row_range_of_matrix_a=range(len(a)),
+#     col_range_of_matrix_a=range(len(a[0])),
+#     matrix_b=b,
+#     row_range_of_matrix_b=range(len(b)),
+#     col_range_of_matrix_b=range(len(b[0]))
+# ))
+
+for i in range(6, 0, -1):
+    print(i)
