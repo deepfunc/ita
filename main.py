@@ -11,7 +11,10 @@ import number.modular_linear_equation
 import search.binary_search_tree
 import number.fibonacci
 import utils.matrix as matrix
-import sort.max_heap
+import sort.max_heap as max_heap
+from enum import Enum
+from unittest import TestCase
+
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -57,5 +60,25 @@ import sort.max_heap
 #     col_range_of_matrix_b=range(len(b[0]))
 # ))
 
-for i in range(6, 0, -1):
-    print(i)
+class Month(Enum):
+    Jan = 1
+    Feb = 2
+    Mar = 3
+    Apr = 4
+    May = 5
+    Jun = 6
+    Jul = 7
+    Aug = 8
+    Sep = 9
+    Oct = 10
+    Nov = 11
+    Dec = 12
+
+
+# for name, member in Month.__members__.items():
+#     print(name, '=>', member, ',', member.value)
+import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logging.debug(os.environ['PATH'])
