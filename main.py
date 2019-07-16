@@ -11,9 +11,7 @@ import number.modular_linear_equation
 import search.binary_search_tree
 import number.fibonacci
 import utils.matrix as matrix
-import sort.max_heap as max_heap
 from enum import Enum
-from unittest import TestCase
 
 
 # sort.insertion.play()
@@ -77,8 +75,3 @@ class Month(Enum):
 
 # for name, member in Month.__members__.items():
 #     print(name, '=>', member, ',', member.value)
-import os
-import logging
-
-logging.basicConfig(level=logging.DEBUG)
-logging.debug(os.environ['PATH'])
