@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sort.insertion
-import sort.merge
-import search.find_maximum_subarray
-import number.power
-import number.gcd
-import number.modular_exponentiation
-import number.modular_linear_equation
-import search.binary_search_tree
-import number.fibonacci
-import utils.matrix as matrix
-from enum import Enum
-
+# import sort.insertion
+# import sort.merge
+# import search.find_maximum_subarray
+# import number.power
+# import number.gcd
+# import number.modular_exponentiation
+# import number.modular_linear_equation
+# import search.binary_search_tree
+# import number.fibonacci
+# import utils.matrix as matrix
+# from enum import Enum
 
 # sort.insertion.play()
 # sort.merge.play()
@@ -58,19 +57,19 @@ from enum import Enum
 #     col_range_of_matrix_b=range(len(b[0]))
 # ))
 
-class Month(Enum):
-    Jan = 1
-    Feb = 2
-    Mar = 3
-    Apr = 4
-    May = 5
-    Jun = 6
-    Jul = 7
-    Aug = 8
-    Sep = 9
-    Oct = 10
-    Nov = 11
-    Dec = 12
+# class Month(Enum):
+#     Jan = 1
+#     Feb = 2
+#     Mar = 3
+#     Apr = 4
+#     May = 5
+#     Jun = 6
+#     Jul = 7
+#     Aug = 8
+#     Sep = 9
+#     Oct = 10
+#     Nov = 11
+#     Dec = 12
 
 
 # for name, member in Month.__members__.items():
