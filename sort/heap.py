@@ -37,15 +37,15 @@ class HeapBase(metaclass=abc.ABCMeta):
 class MaxHeap(HeapBase):
     """最大堆的实现
 
-    父节点数值 >= 孩子节点数值
+    父节点数值 ≥ 孩子节点数值
     """
 
     def _heapify(self, i):
         """维护最大堆的性质，对可能违反的节点逐级下降"""
+        largest = i
         left = self._get_left(i)
         right = self._get_right(i)
-        largest = i
-        if left <= self._heap_size - 1 and self._list[left] > self._list[i]:
+        if left <= self._heap_size - 1 and self._list[left] > self._list[largest]:
             largest = left
         if right <= self._heap_size - 1 and self._list[right] > self._list[largest]:
             largest = right
@@ -73,3 +73,44 @@ class MaxHeap(HeapBase):
             self._heap_size -= 1
             self._heapify(0)
             idx -= 1
+
+        return self._list
+
+
+class MinHeap(HeapBase):
+    """最小堆的实现
+
+    父节点数值 ≤ 孩子节点数值
+    """
+
+    def _heapify(self, i):
+        smallest = i
+        left = self._get_left(i)
+        right = self._get_right(i)
+        if left <= self._heap_size - 1 and self._list[left] < self._list[smallest]:
+            smallest = left
+        if right <= self._heap_size - 1 and self._list[right] < self._list[smallest]:
+            smallest = right
+        if smallest != i:
+            self._list[i], self._list[smallest] = self._list[smallest], self._list[i]
+            self._heapify(smallest)
+
+    def _build_heap(self):
+        self.__heap_size = len(self._list)
+        parent = self._get_parent(self._heap_size - 1)
+        while parent >= 0:
+            self._heapify(parent)
+            parent -= 1
+
+    def sort(self):
+        self._build_heap()
+        idx = len(self._list) - 1
+
+        while idx >= 1:
+            # 交换第一个元素（最小）与最后一个，并维护最小堆特性
+            self._list[0], self._list[idx] = self._list[idx], self._list[0]
+            self._heap_size -= 1
+            self._heapify(0)
+            idx -= 1
+
+        return self._list[::-1]
