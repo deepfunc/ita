@@ -49,7 +49,7 @@ class TestMinHeap(object):
         list_ = [16, 4, 10, 14, 7, 9, 3, 2, 8, 1]
         min_heap = MinHeap(list_)
         min_heap.build_heap()
-        assert min_heap._list == [1, 2, 3, 8, 4, 9, 10, 14, 16, 7]
+        assert min_heap.list == [1, 2, 3, 8, 4, 9, 10, 14, 16, 7]
 
     def test_sort(self):
         list_ = [16, 4, 10, 14, 7, 9, 3, 2, 8, 1]
