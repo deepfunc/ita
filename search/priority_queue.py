@@ -14,6 +14,10 @@ class PriorityQueueBase(metaclass=abc.ABCMeta):
     def heap_size(self, value):
         self._heap.heap_size = value
 
+    def __init__(self, heap):
+        self._heap = heap
+        self._heap.build_heap()
+
     def __getitem__(self, key):
         return self._heap.list[key]
 
@@ -23,13 +27,17 @@ class PriorityQueueBase(metaclass=abc.ABCMeta):
     def heapify(self, i):
         self._heap.heapify(i)
 
-    def __init__(self, heap):
-        self._heap = heap
+    def list_glance(self):
+        """查看当前堆的数据"""
+        return self._heap.list[:]
 
 
 class MaxPriorityQueue(PriorityQueueBase):
-    def __init__(self):
-        super().__init__(MaxHeap([]))
+    """最大优先队列
+    """
+
+    def __init__(self, list_):
+        super().__init__(MaxHeap(list_))
 
     def get_maximum(self):
         if self.heap_size < 1:
@@ -52,17 +60,25 @@ class MaxPriorityQueue(PriorityQueueBase):
         if key < self[i]:
             raise Exception('new key is smaller then current key')
 
+        self[i] = key
         while i > 0 and self[self.get_parent(i)] < self[i]:
             self[i], self[self.get_parent(i)] = self[self.get_parent(i)], self[i]
             i = self.get_parent(i)
 
     def insert(self, key):
         self.heap_size += 1
-        self[self.heap_size - 1] = float('-inf')
+        new_key = float('-inf')
+        if self.heap_size > len(self._heap.list):
+            self._heap.list.append(new_key)
+        else:
+            self[self.heap_size - 1] = new_key
         self.increase_key(self.heap_size - 1, key)
 
 
 class MinPriorityQueue(PriorityQueueBase):
+    """最小优先队列
+    """
+
     def __init__(self):
         super().__init__(MinHeap([]))
 
@@ -87,6 +103,7 @@ class MinPriorityQueue(PriorityQueueBase):
         if key > self[i]:
             raise Exception('new key is bigger then current key')
 
+        self[i] = key
         while i > 0 and self[self.get_parent(i)] > self[i]:
             self[i], self[self.get_parent(i)] = self[self.get_parent(i)], self[i]
             i = self.get_parent(i)
