@@ -7,10 +7,11 @@ class TestMaxPriorityQueue(object):
         queue = MaxPriorityQueue([1, 3, 2, 4])
         assert queue.list_glance() == [4, 3, 2, 1]
 
+    def test_get_maximum(self):
+        """测试返回最大的元素"""
+        queue = MaxPriorityQueue([1, 2, 3, 4, 5, 6])
+        assert queue.get_maximum() == 6
+
     def test_insert(self):
-        queue = MaxPriorityQueue()
-        queue.insert(1)
-        queue.insert(3)
-        queue.insert(2)
-        queue.insert(4)
-        assert queue.list_glance() == [4, 3, 2, 1]
+        queue = MaxPriorityQueue([1, 2, 3])
+        assert queue.list_glance() == [3, 2, 1]
