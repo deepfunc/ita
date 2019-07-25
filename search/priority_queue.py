@@ -27,9 +27,9 @@ class PriorityQueueBase(metaclass=abc.ABCMeta):
     def heapify(self, i):
         self._heap.heapify(i)
 
-    def list_glance(self):
+    def queue_glance(self):
         """查看当前堆的数据"""
-        return self._heap.list[:]
+        return self._heap.list[:self.heap_size]
 
 
 class MaxPriorityQueue(PriorityQueueBase):
@@ -79,8 +79,8 @@ class MinPriorityQueue(PriorityQueueBase):
     """最小优先队列
     """
 
-    def __init__(self):
-        super().__init__(MinHeap([]))
+    def __init__(self, list_):
+        super().__init__(MinHeap(list_))
 
     def get_minimum(self):
         if self.heap_size < 1:
