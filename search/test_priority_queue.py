@@ -85,12 +85,34 @@ class TestMinPriorityQueue(object):
 
     def test_decrease_key(self):
         """测试减小元素的值"""
-        queue = MaxPriorityQueue([1, 2, 3, 4])
-        assert queue.queue_glance() == [4, 2, 3, 1]
+        queue = MinPriorityQueue([1, 2, 3, 4])
+        assert queue.queue_glance() == [1, 2, 3, 4]
         with pytest.raises(Exception) as e:
-            queue.increase_key(2, 1)
-        assert 'smaller' in str(e.value)
-        queue.increase_key(2, 6)
-        assert queue.queue_glance() == [6, 2, 4, 1]
-        queue.increase_key(3, 66)
-        assert queue.queue_glance() == [66, 6, 4, 2]
+            queue.decrease_key(1, 6)
+        assert 'bigger' in str(e.value)
+        queue.decrease_key(1, -1)
+        assert queue.queue_glance() == [-1, 1, 3, 4]
+        queue.decrease_key(3, -6)
+        assert queue.queue_glance() == [-6, -1, 3, 1]
+
+    def test_insert(self):
+        """测试增加新的元素"""
+        queue = MinPriorityQueue([])
+        assert queue.queue_glance() == []
+        assert queue.heap_size == 0
+
+        queue.insert(1)
+        assert queue.queue_glance() == [1]
+        assert queue.heap_size == 1
+
+        queue.insert(7)
+        assert queue.queue_glance() == [1, 7]
+        assert queue.heap_size == 2
+
+        queue.insert(6)
+        assert queue.queue_glance() == [1, 7, 6]
+        assert queue.heap_size == 3
+
+        queue.insert(-2)
+        assert queue.queue_glance() == [-2, 1, 6, 7]
+        assert queue.heap_size == 4
