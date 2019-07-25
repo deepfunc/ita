@@ -65,3 +65,32 @@ class TestMinPriorityQueue(object):
         """测试创建的最小优先队列是否初始化为最小堆"""
         queue = MinPriorityQueue([4, 3, 2, 1])
         assert queue.queue_glance() == [1, 3, 2, 4]
+
+    def test_get_minimum(self):
+        """测试返回最小元素"""
+        queue = MinPriorityQueue([1, 2, 3, 4, 5, 6])
+        assert queue.get_minimum() == 1
+        queue = MinPriorityQueue([10, 100, 123, 789, 456, 300, 241])
+        assert queue.get_minimum() == 10
+
+    def test_extract_minimum(self):
+        """测试抽取最小元素"""
+        queue = MinPriorityQueue([1, 2, 3])
+        assert queue.extract_minimum() == 1
+        assert queue.queue_glance() == [2, 3]
+        assert queue.heap_size == 2
+        queue.insert(-6)
+        assert queue.queue_glance() == [-6, 3, 2]
+        assert queue.heap_size == 3
+
+    def test_decrease_key(self):
+        """测试减小元素的值"""
+        queue = MaxPriorityQueue([1, 2, 3, 4])
+        assert queue.queue_glance() == [4, 2, 3, 1]
+        with pytest.raises(Exception) as e:
+            queue.increase_key(2, 1)
+        assert 'smaller' in str(e.value)
+        queue.increase_key(2, 6)
+        assert queue.queue_glance() == [6, 2, 4, 1]
+        queue.increase_key(3, 66)
+        assert queue.queue_glance() == [66, 6, 4, 2]

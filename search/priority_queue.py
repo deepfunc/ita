@@ -110,5 +110,9 @@ class MinPriorityQueue(PriorityQueueBase):
 
     def insert(self, key):
         self.heap_size += 1
-        self[self.heap_size - 1] = float('inf')
+        new_key = float('inf')
+        if self.heap_size > len(self._heap.list):
+            self._heap.list.append(new_key)
+        else:
+            self[self.heap_size - 1] = new_key
         self.decrease_key(self.heap_size - 1, key)
