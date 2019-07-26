@@ -1,4 +1,42 @@
 class QuickSort(object):
     """快速排序的实现
     """
-    pass
+
+    @property
+    def list(self):
+        return self._list
+
+    def __init__(self, list_):
+        self._list = list_[:]
+
+    def sort1(self):
+        self.sort_by_partition1(0, len(self._list) - 1)
+
+    def sort_by_partition1(self, p, r):
+        if p < r:
+            q = self.partition1(p, r)
+            self.sort_by_partition1(p, q - 1)
+            self.sort_by_partition1(q + 1, r)
+
+    def partition1(self, p, r):
+        # 选择 r 为主元（pivot element，中心点元素）
+        x = self._list[r]
+        i = p - 1
+        j = p
+
+        while j <= r - 1:
+            if self._list[j] <= x:
+                i += 1
+
+                # 交换 i、j 的值
+                self._list[i], self._list[j] = self._list[j], self._list[i]
+                j += 1
+
+        # 交换 i + 1、r 的值
+        self._list[i + 1], self._list[r] = self._list[r], self._list[i + 1]
+        return i + 1
+
+    def partition2(self, p, r):
+        # 选择 p 为主元
+        x = self._list[p]
+
