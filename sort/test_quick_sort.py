@@ -25,3 +25,8 @@ class TestQuickSort(object):
         """测试按第二种划分排序"""
         qs = QuickSort([16, 5, 4, 3, 2, 7, 1, 66, 17])
         assert qs.sort2() == [1, 2, 3, 4, 5, 7, 16, 17, 66]
+
+    def test_sort1_randomized(self):
+        """测试按第一种划分排序，随机化 r 的值 """
+        qs = QuickSort([16, 5, 4, 3, 2, 7, 1, 66, 17])
+        assert qs.sort1_randomized() == [1, 2, 3, 4, 5, 7, 16, 17, 66]
