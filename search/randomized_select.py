@@ -1,4 +1,4 @@
-from ..sort.quick_sort import QuickSort
+from sort.quick_sort import QuickSort
 
 
 class RandomizedSelect(object):
@@ -10,8 +10,13 @@ class RandomizedSelect(object):
             raise Exception('list_ must be a list!')
         self._list = list_
 
-    def find(self, i):
+    def select(self, i):
         a = self._list
+        if i <= 0:
+            raise Exception('i must be greater than 0!')
+        if i > len(a):
+            raise Exception('i must be equal or less than %d!' % len(a))
+
         return self.randomized_select(a, 0, len(a) - 1, i)
 
     @staticmethod
