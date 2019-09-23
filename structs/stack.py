@@ -3,8 +3,8 @@ class Stack(object):
 
     def __init__(self, n):
         self._n = n
-        self._top = -1
         self._list = [None] * self._n
+        self._top = -1
 
     def is_empty(self):
         return self._top == -1
