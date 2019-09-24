@@ -15,14 +15,14 @@ class Queue(object):
             raise Exception('overflow')
 
         self._list[self._tail] = x
-        self._tail = (self._tail + 1 if self._tail != self._n - 1 else 1)
+        self._tail = (self._tail + 1 if self._tail != self._n - 1 else 0)
 
     def de_queue(self):
         if self.is_empty():
             raise Exception('underflow')
 
         x = self._list[self._head]
-        self._head = (self._head + 1 if self._head != self._n - 1 else 1)
+        self._head = (self._head + 1 if self._head != self._n - 1 else 0)
 
         return x
 
@@ -30,5 +30,5 @@ class Queue(object):
         return self._head == self._tail
 
     def is_full(self):
-        next_tail = self._tail + 1 if self._tail != self._n - 1 else 1
+        next_tail = self._tail + 1 if self._tail != self._n - 1 else 0
         return next_tail == self._head
