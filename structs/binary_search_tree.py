@@ -2,10 +2,6 @@
 """
 
 
-def play():
-    inorder_tree_walk(1)
-
-
 class Node:
     def __init__(self, key):
         self.key = key
@@ -22,16 +18,35 @@ class Node:
 
     __repr__ = __str__
 
+    def set_left_node(self, node):
+        self.left = node
 
-def inorder_tree_walk(x):
+    def set_right_node(self, node):
+        self.right = node
+
+
+def preorder_tree_walk(node, handler):
+    """先序遍历"""
+    if node is not None:
+        handler(node)
+        inorder_tree_walk(node.left, handler)
+        inorder_tree_walk(node.right, handler)
+
+
+def inorder_tree_walk(node, handler):
     """中序遍历"""
-    if x is not None:
-        if not isinstance(x, Node):
-            raise Exception('x must be a Node!')
+    if node is not None:
+        inorder_tree_walk(node.left, handler)
+        handler(node)
+        inorder_tree_walk(node.right, handler)
 
-        inorder_tree_walk(x.left)
-        print(x.key)
-        inorder_tree_walk(x.right)
+
+def postorder_tree_walk(node, handler):
+    """后序遍历"""
+    if node is not None:
+        inorder_tree_walk(node.left, handler)
+        inorder_tree_walk(node.right, handler)
+        handler(node)
 
 
 def tree_search(x, key):
