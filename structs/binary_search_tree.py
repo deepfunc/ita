@@ -3,11 +3,15 @@
 
 
 class Node:
-    def __init__(self, key):
+    def __init__(self, key, left_node=None, right_node=None):
         self.key = key
         self.p = None
-        self.left = None
-        self.right = None
+        self.left = left_node
+        if self.left is not None:
+            self.left.p = self
+        self.right = right_node
+        if self.right is not None:
+            self.right.p = self
 
     def __str__(self):
         self_str = 'Node(key={}, p.key={}, left.key={}, right.key={})'
@@ -20,17 +24,19 @@ class Node:
 
     def set_left_node(self, node):
         self.left = node
+        node.p = self
 
     def set_right_node(self, node):
         self.right = node
+        node.p = self
 
 
 def preorder_tree_walk(node, handler):
     """先序遍历"""
     if node is not None:
         handler(node)
-        inorder_tree_walk(node.left, handler)
-        inorder_tree_walk(node.right, handler)
+        preorder_tree_walk(node.left, handler)
+        preorder_tree_walk(node.right, handler)
 
 
 def inorder_tree_walk(node, handler):
@@ -44,8 +50,8 @@ def inorder_tree_walk(node, handler):
 def postorder_tree_walk(node, handler):
     """后序遍历"""
     if node is not None:
-        inorder_tree_walk(node.left, handler)
-        inorder_tree_walk(node.right, handler)
+        postorder_tree_walk(node.left, handler)
+        postorder_tree_walk(node.right, handler)
         handler(node)
 
 
@@ -66,4 +72,16 @@ def iterative_tree_search(x, key):
             x = x.left
         else:
             x = x.right
+    return x
+
+
+def tree_minimum(x):
+    while x.left is not None:
+        x = x.left
+    return x
+
+
+def tree_maximum(x):
+    while x.right is not None:
+        x = x.right
     return x
