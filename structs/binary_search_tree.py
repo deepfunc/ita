@@ -85,3 +85,29 @@ def tree_maximum(x):
     while x.right is not None:
         x = x.right
     return x
+
+
+def tree_successor(x):
+    """寻找后继"""
+    if x.right is not None:
+        return tree_minimum(x.right)
+
+    y = x.p
+    while y is not None and x == y.right:
+        x = y
+        y = y.p
+
+    return y
+
+
+def tree_predecessor(x):
+    """寻找前驱"""
+    if x.left is not None:
+        return tree_maximum(x.left)
+
+    y = x.p
+    while y is not None and x == y.left:
+        x = y
+        y = y.p
+
+    return y

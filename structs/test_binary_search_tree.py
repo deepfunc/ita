@@ -1,7 +1,8 @@
 from .binary_search_tree import \
     Node, tree_search, iterative_tree_search, \
     inorder_tree_walk, preorder_tree_walk, postorder_tree_walk, \
-    tree_minimum, tree_maximum
+    tree_minimum, tree_maximum, \
+    tree_successor, tree_predecessor
 
 
 class TestBinarySearchTree(object):
@@ -63,3 +64,62 @@ class TestBinarySearchTree(object):
 
         assert tree_minimum(root).key == 2
         assert tree_maximum(root).key == 8
+
+    def test_successor(self):
+        root = Node(15)
+        root.set_left_node(Node(
+            6,
+            left_node=Node(
+                3,
+                left_node=Node(2),
+                right_node=Node(4)
+            ),
+            right_node=Node(
+                7,
+                right_node=Node(
+                    13,
+                    left_node=Node(9)
+                )
+            )
+        ))
+        root.set_right_node(Node(
+            18,
+            left_node=Node(17),
+            right_node=Node(20)
+        ))
+
+        assert tree_successor(root).key == 17
+
+        x = tree_search(root, 13)
+        assert tree_successor(x).key == 15
+
+    def test_predecessor(self):
+        root = Node(15)
+        root.set_left_node(Node(
+            6,
+            left_node=Node(
+                3,
+                left_node=Node(2),
+                right_node=Node(4)
+            ),
+            right_node=Node(
+                7,
+                right_node=Node(
+                    13,
+                    left_node=Node(9)
+                )
+            )
+        ))
+        root.set_right_node(Node(
+            18,
+            left_node=Node(17),
+            right_node=Node(20)
+        ))
+
+        assert tree_predecessor(root).key == 13
+
+        x = tree_search(root, 17)
+        assert tree_predecessor(x).key == 15
+
+        x = tree_search(root, 20)
+        assert tree_predecessor(x).key == 18
