@@ -31,6 +31,11 @@ class Node:
         node.p = self
 
 
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
+
 def preorder_tree_walk(node, handler):
     """先序遍历"""
     if node is not None:
@@ -88,7 +93,7 @@ def tree_maximum(x):
 
 
 def tree_successor(x):
-    """寻找后继"""
+    """中序遍历中寻找后继"""
     if x.right is not None:
         return tree_minimum(x.right)
 
@@ -101,7 +106,7 @@ def tree_successor(x):
 
 
 def tree_predecessor(x):
-    """寻找前驱"""
+    """中序遍历中寻找前驱"""
     if x.left is not None:
         return tree_maximum(x.left)
 
@@ -111,3 +116,32 @@ def tree_predecessor(x):
         y = y.p
 
     return y
+
+
+def tree_insert(tree, z):
+    y = None
+    x = tree.root
+
+    while x is not None:
+        y = x
+        x = x.left if z.key < x.key else x.right
+
+    z.p = y
+    if y is None:
+        tree.root = z
+    elif z.key < x.key:
+        y.left = z
+    else:
+        y.right = z
+
+
+def transplant(tree, u, v):
+    """用以 v 为根的子树替换一棵以 u 为根的子树"""
+    if u.p is None:
+        tree.root = v
+    elif u == u.p.left:
+        u.p.left = v
+    else:
+        u.p.right = v
+    if v is not None:
+        v.p = u.p
